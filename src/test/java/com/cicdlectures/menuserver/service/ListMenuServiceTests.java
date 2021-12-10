@@ -73,5 +73,6 @@ public class ListMenuServiceTests {
 
       // On compare la valeur obtenue avec la valeur attendue.
       assertEquals(wantMenus, gotMenus);
+
     }
 }

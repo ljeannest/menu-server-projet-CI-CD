@@ -59,7 +59,7 @@ public class MenuControllerIT {
 
     // On compare la valeur obtenue avec la valeur attendue.
     
-    assertEquals();
+    //assertEquals();
   }
 
   

@@ -37,7 +37,41 @@ public class ListMenuServiceTests {
     @Test
     @DisplayName("lists all known menus")
     public void listsKnownMenus() {
-       //List<MenuDto> got = subject.listMenus();
-       when(menuRepository.findAll()).thenReturn(null);
+      // Défini une liste de menus avec un menus.
+      Iterable<Menu> existingMenus = Arrays.asList(
+        new Menu(
+          Long.valueOf(1),
+          "Christmas menu",
+          new HashSet<>(
+            Arrays.asList(
+              new Dish(Long.valueOf(1), "Turkey", null),
+              new Dish(Long.valueOf(2), "Pecan Pie", null)
+          )
+        )
+      )
+    );
+
+    // On configure le menuRepository pour qu'il retourne notre liste de menus.
+    when(menuRepository.findAll()).thenReturn(existingMenus);
+
+    // On appelle notre sujet
+    List<MenuDto> gotMenus = subject.listMenus();
+
+    // On défini wantMenus, les résultats attendus
+    Iterable<MenuDto> wantMenus = Arrays.asList(
+        new MenuDto(
+          Long.valueOf(1),
+          "Christmas menu",
+          new HashSet<>(
+            Arrays.asList(
+              new DishDto(Long.valueOf(1), "Turkey"),
+              new DishDto(Long.valueOf(2), "Pecan Pie")
+            )
+          )
+        )
+      );
+
+      // On compare la valeur obtenue avec la valeur attendue.
+      assertEquals(wantMenus, gotMenus);
     }
 }

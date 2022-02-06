@@ -28,7 +28,7 @@ jobs:
         run: mvn clean verify
         
   release:
-    needs: build
+    needs: [build,tests]
     if: contains(github.ref , 'refs/tags/v')
     runs-on: ubuntu-20.04
     steps:

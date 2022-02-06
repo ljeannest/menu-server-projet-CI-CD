@@ -35,7 +35,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: menu-server
-          path: ./releaseAsset/menu-server.jar
+          path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
 
       - name: Create Release
         id: create_release
@@ -55,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This vnbpulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./releaseAsset/menu-server.jar
+          asset_path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
           asset_name: menu-server
           asset_content_type: application/jar

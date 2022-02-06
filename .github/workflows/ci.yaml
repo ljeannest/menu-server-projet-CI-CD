@@ -26,7 +26,7 @@ jobs:
           java-version: '11'
       - name: Verify tests
         run: mvn clean verify
-
+        
   release:
     needs: build
     if: contains(github.ref , 'refs/tags/v')
@@ -36,6 +36,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: menu-server
+          path: ./releaseAsset/menu-server.jar
 
       - name: Create Release
         id: create_release

@@ -14,7 +14,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: menu-server
-          path: target/menu-server.jar
+          path: target/menuserver-1.0-SNAPSHOT.jar
 
   tests:
     runs-on: ubuntu-20.04

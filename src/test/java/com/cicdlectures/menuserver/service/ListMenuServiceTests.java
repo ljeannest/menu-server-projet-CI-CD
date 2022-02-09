@@ -48,7 +48,7 @@ public class ListMenuServiceTests {
       );
       
       // On configure le menuRepository pour qu'il retourne notre liste de menus.
-      when(repository.findAll()).thenReturn(menus);
+      when(this.repository.findAll()).thenReturn(menus);
 
       // On appelle notre sujet
       List<MenuDto> gotMenus = subject.listMenus();

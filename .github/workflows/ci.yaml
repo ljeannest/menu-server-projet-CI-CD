@@ -71,5 +71,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: menu-server-jmz
           heroku_email: lucie.jeannest@orange.fr
-      - run: docker build -t cicdlectures/menu-server:test .
+#      - run: docker build -t cicdlectures/menu-server:test .
       - run: heroku container:push web --app menu-server-jmz

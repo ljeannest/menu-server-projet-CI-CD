@@ -61,7 +61,7 @@ jobs:
   
   release-heroku:
     needs: [build,tests]
-    if: contains(github.ref , 'refs/tags/v')
+#    if: contains(github.ref , 'refs/tags/v')
     runs-on: ubuntu-20.04
 
     steps:

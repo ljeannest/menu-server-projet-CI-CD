@@ -67,10 +67,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
       - uses: actions/checkout@v2
-#      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: menu-server-jmz
-#          heroku_email: lucie.jeannest@orange.fr
-#      - run: docker build -t cicdlectures/menu-server:test .
+      - name : Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      - run: heroku container:login
       - run: heroku container:push web --app menu-server-jmz

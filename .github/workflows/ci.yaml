@@ -29,7 +29,6 @@ jobs:
         
   release:
     needs: [build,tests]
-    if: contains(github.ref , 'refs/tags/v')
     runs-on: ubuntu-20.04
     steps:
       - name: Download jar app

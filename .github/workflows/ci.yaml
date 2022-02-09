@@ -60,7 +60,7 @@ jobs:
           asset_content_type: application/jar
   
   release-heroku:
-    needs: [build,tests]
+    needs: [build,tests,release]
 #    if: contains(github.ref , 'refs/tags/v')
     runs-on: ubuntu-20.04
 

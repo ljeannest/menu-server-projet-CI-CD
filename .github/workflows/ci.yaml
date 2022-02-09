@@ -65,11 +65,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+      - uses: actions/download-artifact@v2
       - uses: actions/checkout@v2
 #      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: menu-server-jmz
-          heroku_email: lucie.jeannest@orange.fr
+#          heroku_email: lucie.jeannest@orange.fr
 #      - run: docker build -t cicdlectures/menu-server:test .
       - run: heroku container:push web --app menu-server-jmz

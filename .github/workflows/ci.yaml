@@ -58,3 +58,18 @@ jobs:
           asset_path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
           asset_name: menu-server
           asset_content_type: application/jar
+  
+  release-heroku:
+    needs: [build,tests]
+    if: contains(github.ref , 'refs/tags/v')
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: menu-server-jmz
+          heroku_email: lucie.jeannest@orange.fr
+      - run: docker build -t cicdlectures/menu-server:test .
+      - run: heroku container:push web --app menu-server-jmz

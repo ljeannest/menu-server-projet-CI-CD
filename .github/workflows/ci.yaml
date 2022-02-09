@@ -31,30 +31,26 @@ jobs:
     if: contains(github.ref , 'refs/tags/v')
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - name: Download jar app
+        uses: actions/download-artifact@v2
         with:
-          name: menu-server
-          path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
-
+          name: app-jar
       - name: Create Release
-        id: create_release
+        id: create-release
         uses: actions/create-release@v1
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-
       - name: Upload Release Asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This vnbpulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
-          asset_name: menu-server
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: ./target/menuserver-1.0-SNAPSHOT.jar
+          asset_name: menu-server.jar
           asset_content_type: application/jar

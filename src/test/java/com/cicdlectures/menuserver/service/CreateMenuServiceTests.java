@@ -43,13 +43,13 @@ public class CreateMenuServiceTests {
   public void savesANewMenu() {
     MenuDto newMenu = new MenuDto(null, "Christmas menu",
         new HashSet<DishDto>(Arrays.asList(
-            new DishDto(null, "Ndole"), 
-            new DishDto(null, "Eru"))));
+            new DishDto(null, "Eru"), 
+            new DishDto(null, "Ndole"))));
 
     Menu returnedMenu = new Menu(Long.valueOf(1), "Christmas menu", new HashSet<Dish>(
         Arrays.asList(
-            new Dish(Long.valueOf(2), "Ndole", null),
-            new Dish(Long.valueOf(3), "Eru", null))));
+            new Dish(Long.valueOf(2), "Eru", null),
+            new Dish(Long.valueOf(3), "Ndole", null))));
 
     when(menuRepository.save(any(Menu.class))).thenReturn(returnedMenu);
 

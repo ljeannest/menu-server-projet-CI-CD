@@ -57,8 +57,8 @@ public class MenuControllerIT {
 
     private final List<Menu> existingMenus = Arrays.asList(
         new Menu(null, "Christmas menu", new HashSet<>(Arrays.asList(
-            new Dish(null, "Ndole", null), 
-            new Dish(null, "Eru", null)))),
+            new Dish(null, "Eru", null), 
+            new Dish(null, "Ndole", null)))),
         new Menu(null, "Wedding menu", new HashSet<>(Arrays.asList(
             new Dish(null, "Poulet DG", null), 
             new Dish(null, "Tarte au chocolat", null)))));
@@ -81,12 +81,12 @@ public class MenuControllerIT {
             new MenuDto(Long.valueOf(1), "Christmas menu",
                 new HashSet<DishDto>(
                     Arrays.asList(
-                        new DishDto(Long.valueOf(1), "Ndole"), 
-                        new DishDto(Long.valueOf(2), "Eru")))),
+                        new DishDto(Long.valueOf(1), "Eru"), 
+                        new DishDto(Long.valueOf(2), "Ndole")))),
             new MenuDto(Long.valueOf(2), "Wedding menu", new HashSet<DishDto>(
                     Arrays.asList(
-                    new DishDto(Long.valueOf(3), "Poulet DG"), 
-                    new DishDto(Long.valueOf(4), "Tarte au chocolat")))) };
+                    new DishDto(Long.valueOf(3), "Tarte au chocolat"), 
+                    new DishDto(Long.valueOf(4), "Poulet DG")))) };
                     
                     ResponseEntity<MenuDto[]> response = this.template.getForEntity(url.toString(), MenuDto[].class);
                     MenuDto[] gotMenus = response.getBody();
@@ -99,13 +99,13 @@ public class MenuControllerIT {
     public void createsNewMenu() throws Exception {
         MenuDto wantMenu = new MenuDto(Long.valueOf(3), "Dinner's family menu", new HashSet<DishDto>(
             Arrays.asList(
-                new DishDto(Long.valueOf(1), "Ndole"), 
-                new DishDto(Long.valueOf(2), "Eru"))));
+                new DishDto(Long.valueOf(1), "Eru"), 
+                new DishDto(Long.valueOf(2), "Ndole"))));
 
         MenuDto newMenu = new MenuDto(null, "Dinner's family menu",
             new HashSet<DishDto>(Arrays.asList(
-                new DishDto(null, "Ndole"), 
-                new DishDto(null, "Eru"))));
+                new DishDto(null, "Eru"), 
+                new DishDto(null, "Ndole"))));
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

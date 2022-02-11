@@ -1,5 +1,6 @@
 com/cicdlectures/menuserver/dto/DishDto.class
 com/cicdlectures/menuserver/service/ListMenuService.class
+com/cicdlectures/menuserver/MyRunner.class
 com/cicdlectures/menuserver/repository/DishRepository.class
 com/cicdlectures/menuserver/model/Dish.class
 com/cicdlectures/menuserver/repository/MenuRepository.class

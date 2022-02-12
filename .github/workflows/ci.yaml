@@ -66,8 +66,12 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/download-artifact@v2
       - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: menuserver-1.0
+          path: ./releaseAsset
+
       - name : Login to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}

@@ -2,7 +2,7 @@
 FROM azul/zulu-openjdk:11
 
 # Copier l'archive JAR depuis l'hôte dans le fichier /opt/app/menu-server.jar de l'image
-COPY target/menuserver-1.0-SNAPSHOT.jar /opt/app/menu-server.jar
+COPY ./releaseAsset/menuserver-1.0-SNAPSHOT.jar /opt/app/menu-server.jar
 
 # Définis la commande par défaut du container à java -jar /opt/app/menu-server.jar  --server.port=${PORT}
 # La variable d'environnement PORT est définie par heroku à la création du container.

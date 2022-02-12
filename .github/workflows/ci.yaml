@@ -78,4 +78,4 @@ jobs:
           mvn package
           heroku container:login
           heroku container:push web --app menu-server-jmz
-          heroku container:release
+          heroku container:release --app menu-server-jmz

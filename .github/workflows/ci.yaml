@@ -37,7 +37,6 @@ jobs:
           name: menu-server
           path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
  
- 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

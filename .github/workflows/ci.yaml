@@ -34,8 +34,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: menu-server
-          path: ./target/menu-server.jar
-
+          path: ./releaseAsset
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -54,6 +53,28 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This vnbpulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./target/menu-server.jar
-          asset_name: menu-server
-          asset_content_type: application/jar
+          asset_path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
+          asset_name: menuserver-1.0.jar
+          asset_content_type: application/java-archive
+  
+  release-heroku:
+    needs: [build,tests,release]
+    if: contains(github.ref , 'refs/tags/v')
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+#        with:
+#          name: menuserver-1.0
+#          path: ./releaseAsset
+
+      - name : Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: | 
+          mvn package
+          heroku container:login
+          heroku container:push web --app menu-server-jmz
+          heroku container:release web --app menu-server-jmz
+

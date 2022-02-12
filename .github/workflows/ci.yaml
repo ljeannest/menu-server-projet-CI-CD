@@ -36,7 +36,6 @@ jobs:
         with:
           name: menu-server
           path: ./releaseAsset
-          #/menuserver-1.0-SNAPSHOT.jar
  
       - name: Create Release
         id: create_release
@@ -68,9 +67,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
-        with:
-          name: menuserver-1.0
-          path: ./releaseAsset
+#        with:
+#          name: menuserver-1.0
+#          path: ./releaseAsset
 
       - name : Login to Heroku
         env:

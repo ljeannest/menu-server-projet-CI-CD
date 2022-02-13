@@ -1,26 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.cicdlectures.menuserver.controller.MenuControllerIT
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 9.048 s <<< FAILURE! - in com.cicdlectures.menuserver.controller.MenuControllerIT
-createsNewMenu  Time elapsed: 0.004 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
-Caused by: org.springframework.dao.DataIntegrityViolationException: 
-could not execute statement; SQL [n/a]; constraint ["PUBLIC.PRIMARY_KEY_E ON PUBLIC.MENUS_DISHES(MENUS_ID, DISHES_ID) VALUES 3"; SQL statement:
-insert into menus_dishes (menus_id, dishes_id) values (?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
-Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
-Unique index or primary key violation: "PUBLIC.PRIMARY_KEY_E ON PUBLIC.MENUS_DISHES(MENUS_ID, DISHES_ID) VALUES 3"; SQL statement:
-insert into menus_dishes (menus_id, dishes_id) values (?, ?) [23505-200]
-
-listsExistingMenus  Time elapsed: 0 s  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: java.lang.IllegalStateException: Failed to execute CommandLineRunner
-Caused by: org.springframework.dao.DataIntegrityViolationException: 
-could not execute statement; SQL [n/a]; constraint ["PUBLIC.PRIMARY_KEY_E ON PUBLIC.MENUS_DISHES(MENUS_ID, DISHES_ID) VALUES 3"; SQL statement:
-insert into menus_dishes (menus_id, dishes_id) values (?, ?) [23505-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
-Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
-Caused by: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: 
-Unique index or primary key violation: "PUBLIC.PRIMARY_KEY_E ON PUBLIC.MENUS_DISHES(MENUS_ID, DISHES_ID) VALUES 3"; SQL statement:
-insert into menus_dishes (menus_id, dishes_id) values (?, ?) [23505-200]
-
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.274 s - in com.cicdlectures.menuserver.controller.MenuControllerIT

@@ -51,6 +51,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+      
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli</artifactId>
+      <version>3.9.6</version>
+    </dependency>
     
 	</dependencies>
 	
@@ -117,6 +123,9 @@
                 </execution>
             </executions>
         </plugin>
+
+      
+
     </plugins>
   </build>
  

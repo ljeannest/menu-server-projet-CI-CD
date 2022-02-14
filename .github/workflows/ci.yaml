@@ -14,7 +14,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: menu-server
-          path: target/menuserver-1.0-SNAPSHOT.jar
+          path: ./target/menu-server.jar
 
   tests:
     runs-on: ubuntu-20.04
@@ -31,11 +31,11 @@ jobs:
     needs: [build,tests]
     runs-on: ubuntu-20.04
     steps:
-      - name: Download jar app
-        uses: actions/download-artifact@v2
+
+      - uses: actions/download-artifact@v2
         with:
           name: menu-server
-          path: ./releaseAsset/menu-server.jar
+          path: ./releaseAsset
       - name: Create Release
         id: create-release
         uses: actions/create-release@v1
@@ -55,3 +55,25 @@ jobs:
           asset_path: ./releaseAsset/menuserver-1.0-SNAPSHOT.jar
           asset_name: menuserver-1.0.jar
           asset_content_type: application/java-archive
+  
+  release-heroku:
+    needs: [build,tests,release]
+    if: contains(github.ref , 'refs/tags/v')
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+#        with:
+#          name: menuserver-1.0
+#          path: ./releaseAsset
+
+      - name : Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: | 
+          mvn package
+          heroku container:login
+          heroku container:push web --app menu-server-jmz
+          heroku container:release web --app menu-server-jmz
+

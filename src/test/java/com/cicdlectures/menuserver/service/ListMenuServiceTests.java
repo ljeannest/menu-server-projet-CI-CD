@@ -40,8 +40,8 @@ public class ListMenuServiceTests {
           "Christmas menu", 
           new HashSet<>(
             Arrays.asList(
-              new Dish(Long.valueOf(1), "Ndole", null),
-              new Dish(Long.valueOf(2), "Eru", null)
+              new Dish(Long.valueOf(1), "Eru", null),
+              new Dish(Long.valueOf(2), "Ndole", null)
             )
           )
         )
@@ -60,8 +60,8 @@ public class ListMenuServiceTests {
           "Christmas menu",
           new HashSet<>(
             Arrays.asList(
-              new DishDto(Long.valueOf(1), "Ndole"),
-              new DishDto(Long.valueOf(2), "Eru")
+              new DishDto(Long.valueOf(1), "Eru"),
+              new DishDto(Long.valueOf(2), "Ndole")
             )
           )
         )
